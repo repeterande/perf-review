@@ -1,0 +1,23 @@
+provider: local
+ClusterLoader:
+  cleanup: false
+  projects:
+    - num: 1
+      basename: pod-stress-simple
+      tuning: default
+      ifexists: delete
+      pods:
+        - num: 10
+          image: lorel/docker-stress-ng
+          basename: sketest1
+          file: pod-stress-simple.json
+
+
+  tuningsets:
+    - name: default
+      pods:
+        stepping:
+          stepsize: 40
+          pause: 180
+        ratelimit:
+          delay: 0
